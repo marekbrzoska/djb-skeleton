@@ -10,99 +10,96 @@
         <meta name="author" content="{% block meta_author %}{% endblock %}">
     {% endblock %}
 
-    {% block css_bootstrap %}
-        <link href="http://netdna.bootstrapcdn.com/bootswatch/2.1.0/spacelab/bootstrap.min.css" rel="stylesheet">
-        <style>
-            body {
-                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-            }
-        </style>
-    {% endblock %}
-    {% block css_bootstrap_responsive %}
-        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
-    {% endblock %}
-    {% block css_site %}
-    {% endblock %}
-    {% block css_extra %}
-    {% endblock %}
+    <link href="http://netdna.bootstrapcdn.com/bootswatch/2.1.0/spacelab/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+    </style>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
 
-    {% block js_html5_shim %}
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-    {% endblock %}
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
     {% block js_head %}
     {% endblock %}
+
 {% endblock %}
 </head>
 
-{# TODO: write a class builder macro #}
-<body class="{% block body_classes %}{% endblock %}" id="{% block body_id %}{% endblock %}"{% block bodytag_extra %}{% endblock %}>
+<body>
 {% block body %}
 
-    {% block navbar_wrapper %}
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    {% block navbar_container %}
-                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a>
-                        {% block navbar_links %}
-                            <a class="brand" href="#">My App</a>
-                            <div class="nav-collapse">
-                                <ul class="nav">
-                                    <li class="active"><a href="#">Home</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                            </div>
-                        {% endblock %}
-                    {% endblock %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <span class="brand" href="#">My App</span>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <p class="navbar-text pull-right">
+                        Logged in as <a href="#" class="navbar-link">Username</a>
+                    </p>
                 </div>
             </div>
         </div>
-    {% endblock %}
+    </div>
 
-    {% block pre_container %}
-    {% endblock %}
-
-    {% block container_wrapper %}
-        <div class="container container-primary">
-            {% block container %}
-
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Sidebar</li>
+                        <li class="active"><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="nav-header">Sidebar</li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="nav-header">Sidebar</li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </div><!--/.well -->
+            </div><!--/span-->
+            <div class="span9">
                 {% block messages %}
                     {% include "bootstrap/includes/messages.html" %}
                 {% endblock %}
 
-                {% block pre_content %}
-                {% endblock %}
-
                 {% block content %}
                 {% endblock %}
+            </div><!--/span-->
+        </div><!--/row-->
+
+        <hr>
+
+        <footer>
+            <p>&copy; Mirumee Labs 2012</p>
+        </footer>
+    </div><!--/.fluid-container-->
 
 
-                {% block post_content %}
-                {% endblock %}
-
-            {% endblock %}
-        </div>
-    {% endblock %}
 
 
-    {% block post_container %}
-    {% endblock %}
-
-    {% block js_jquery %}
-        {# Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline #}
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    {% endblock %}
-
-    {% block js_bootstrap %}
-        <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
-    {% endblock %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
 
     {% block js_footer %}
         {# Add your javascript here #}
