@@ -1,3 +1,5 @@
+from django.contrib import messages
+
 from project.utils.djangojinja2 import render_to_response
 
 
@@ -15,16 +17,10 @@ def home(request):
             'msg1,',
             ' lorem ipsum']
 
-    tags = ['info', 'warning', 'success', 'error']
+    msg_types = ['info', 'warning', 'success', 'error']
 
-    messages = [A(x, y)
-                for x, y
-                in zip(msgs, tags)
-                ]
+    for msg, msg_type in zip(msgs, msg_types):
+        getattr(messages, msg_type)(request, msg)
 
     return render_to_response(
-        'pilot/index.html',
-        {
-            'messages': messages
-        }
-    )
+        'pilot/index.html', {}, request)
