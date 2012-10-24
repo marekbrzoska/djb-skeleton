@@ -17,4 +17,5 @@ urlpatterns = patterns(
     # url(r'^admin/', include(admin.site.urls)),
 
     url(r'^$', 'pilot.views.home', name='home'),
+    url(r'^form$', 'pilot.views.form', name='form'),
 )

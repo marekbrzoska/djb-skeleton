@@ -1,21 +1,16 @@
 from django.contrib import messages
+from django.forms.util import ErrorList
 
 from project.utils.djangojinja2 import render_to_response
 
+from . import forms
+
 
 def home(request):
-    class A(object):
-        def __init__(self, string, tag):
-            self.string = string
-            self.tags = tag
-
-        def __unicode__(self):
-            return self.string
-
     msgs = ['quantu solor, lal',
             'dolor medit amse, lla',
             'msg1,',
-            ' lorem ipsum']
+            'lorem ipsum']
 
     msg_types = ['info', 'warning', 'success', 'error']
 
@@ -24,3 +19,9 @@ def home(request):
 
     return render_to_response(
         'pilot/index.html', {}, request)
+
+
+def form(request):
+    form = forms.Form({'email': 'lsla', 'name': 'Marek'})
+    form.errors['__all__'] = ErrorList([u'Great error', u'small error'])
+    return render_to_response('pilot/form.html', {'form': form}, request)

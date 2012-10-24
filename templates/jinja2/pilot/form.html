@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="">
+            {% from "bootstrap/forms/macros.html" import render_form %}
+            {{ render_form(form) }}
+        </div>
+    </div>
+{% endblock content %}

@@ -23,6 +23,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.template.context import get_standard_processors
 from django.template import TemplateDoesNotExist
+from django.core.urlresolvers import reverse
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound
 
 
@@ -41,10 +42,12 @@ def get_env():
 def create_env():
     """Create a new Jinja2 environment."""
     searchpath = list(settings.JINJA2_TEMPLATE_DIRS)
-    return Environment(loader=FileSystemLoader(searchpath),
-                       auto_reload=settings.TEMPLATE_DEBUG,
-                       cache_size=getattr(settings, 'JINJA2_CACHE_SIZE', 50),
-                       extensions=getattr(settings, 'JINJA2_EXTENSIONS', ()))
+    env = Environment(loader=FileSystemLoader(searchpath),
+                      auto_reload=settings.TEMPLATE_DEBUG,
+                      cache_size=getattr(settings, 'JINJA2_CACHE_SIZE', 50),
+                      extensions=getattr(settings, 'JINJA2_EXTENSIONS', ()))
+    env.globals['reverse'] = reverse
+    return env
 
 
 def get_template(template_name, globals=None):
