@@ -1,0 +1,2 @@
+django-extensions
+jinja2
