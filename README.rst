@@ -14,6 +14,11 @@ Just start project with this repo as template (available since Django 1.4.):
 
 ``django-admin.py startproject yourprojectname --template https://github.com/marekbrzoska/djb-skeleton/archive/master.zip``
 
+Then install the project dependencies:
+
+``make install``
+
+
 Once you you you are comfortable with project setup you will want to delete example: just remove ``apps/pilot/`` directory and pilot urls from project/urls.py file.
 
 Jinja2 Usage
