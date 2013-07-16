@@ -47,6 +47,7 @@ def create_env():
                       cache_size=getattr(settings, 'JINJA2_CACHE_SIZE', 50),
                       extensions=getattr(settings, 'JINJA2_EXTENSIONS', ()))
     env.globals['reverse'] = reverse
+    env.globals['STATIC'] = settings.STATIC_URL
     return env
 
 
